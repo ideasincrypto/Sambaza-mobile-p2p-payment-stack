@@ -1,14 +1,57 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-
+import {View, ScrollView, StyleSheet} from 'react-native';
+import SettingsCard from '../../components/SettingsCard';
+import { useNavigation } from "@react-navigation/native"
 const WalletScreen = ({navigation}) => {
+  const navigatione = useNavigation();
+  const data = [
+    {
+      name: 'Cards',
+      icon: require('../../../assets/card.png'),
+      navigateTo:()=>{navigatione.navigate("Cards") },
+    },
+    {
+      name: 'Banks',
+      icon: require('../../../assets/bank.png'),
+      navigateTo:()=>{navigatione.navigate("Cards") },
+    },
+    {
+      name: 'Link to M-pesa',
+      icon: require('../../../assets/phone.png'),
+      navigateTo:()=>{navigatione.navigate("Cards") },
+    },
+  ];
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Home')}
-      />
+       <ScrollView
+      
+      scrollEventThrottle={1}
+      showsHorizontalScrollIndicator={false}
+      
+      contentInset={{ // iOS only
+        top:0,
+        left:0,
+        bottom:0,
+        right:20
+      }}
+      contentContainerStyle={{
+        flex: 1,
+        top: 0,
+        left: 20,
+    
+        right: 20,
+        padding: 20,     
+      
+      
+      }}
+    >
+        {data.map((item, index) => (
+        <SettingsCard key={index} data={item} >
+        
+        </SettingsCard>))}
+      </ScrollView>
+     
+    
     </View>
   );
 };
@@ -17,7 +60,7 @@ export default WalletScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection:'column',
+    backgroundColor:'white',
   },
 });

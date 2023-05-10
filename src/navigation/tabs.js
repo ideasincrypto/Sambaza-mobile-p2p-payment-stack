@@ -3,30 +3,39 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import WalletScreen from '../screens/WalletScreen';
-import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import PaymentStackNavigator from './stack';
+import HomeStackNavigator from '../screens/HomeScreen';
 
 const Tab = createBottomTabNavigator();
+const {width, height} = Dimensions.get('window');
 const SambazaBtn = ({children, onPress}) => (
   <TouchableOpacity
     onPress={onPress}
     style={{
-      top: -17,
+      top: -10,
       justifyContent: 'center',
       alignItems: 'center',
-    
     }}>
     <View
       style={{
-        width: 70,
-        height: 70,
+        width: 60,
+        height: 60,
         borderRadius: 35,
         backgroundColor: '#FFF',
-        justifyContent:'center'
-        ,alignItems:'center',
-    
+        justifyContent: 'center',
+        ...styles.shadow,
+        backgroundColor: '#3D0B86',
+        alignItems: 'center',
       }}>
       {children}
-  
     </View>
   </TouchableOpacity>
 );
@@ -36,28 +45,29 @@ const Tabs = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
         tabBarStyle: {
           position: 'absolute',
-          borderTopWidth: 0,
-     
-       
+
+          ...styles.shadow,
+
           backgroundColor: '#FFFFFF',
-         
-          height: 70,
-          
+
+          height: 60,
         },
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => {
             return (
               <View
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  top: 10,
+                  top: 7,
 
                   tintColor: focused ? '#3D0B86' : '#FFFFFF',
                 }}>
@@ -65,12 +75,20 @@ const Tabs = () => {
                   source={require('../../assets/home.png')}
                   resizeMode="contain"
                   style={{
-                    width: 25,
-                    height: 25,
+                    width: 22,
+                    height: 22,
                     tintColor: focused ? '#3D0B86' : 'gray',
                   }}
                 />
-         
+                <Text
+                  style={{
+                    color: '#000',
+                    fontSize: 13,
+                    color: focused ? '#3D0B86' : 'gray',
+                    fontFamily: 'Montserrat-Regular',
+                  }}>
+                  Home
+                </Text>
               </View>
             );
           },
@@ -78,47 +96,37 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Sambaza"
-        component={PaymentScreen}
+        component={PaymentStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
-          <>
+            <>
               <Image
                 source={require('../../assets/transfer.png')}
                 resizeMode="contain"
                 style={{
-                  width: 29,
-                  height: 29,
-                  tintColor: '#3D0B86' ,
+                  width: 25,
+                  height: 25,
+                  tintColor: 'white',
                 }}
               />
-              <Text
-              style={{
-                color:  '#000' ,
-                fontSize: 15,
-                top:15,
-                fontFamily:'LeagueSpartan',
-                fontWeight: 'bold',
-              }}>
-           
-            </Text>
-             
             </>
           ),
-          tabBarButton: (props) => (<SambazaBtn {...props} />)
-          ,
+          tabBarButton: props => <SambazaBtn {...props} />,
         }}
       />
       <Tab.Screen
         name="Wallet"
         component={WalletScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => {
             return (
               <View
                 style={{
                   alignItems: 'center',
                   justifyContent: 'center',
-                  top: 10,
+                  top: 7,
 
                   tintColor: focused ? '#3D0B86' : 'gray',
                 }}>
@@ -126,12 +134,21 @@ const Tabs = () => {
                   source={require('../../assets/wallet.png')}
                   resizeMode="contain"
                   style={{
-                    width: 25,
-                    height: 25,
+                    width: 22,
+                    height: 22,
                     tintColor: focused ? '#3D0B86' : 'gray',
                   }}
                 />
-               
+                <Text
+                  style={{
+                    color: '#000',
+                    fontSize: 13,
+                    color: focused ? '#3D0B86' : 'gray',
+                    fontWeight: '100',
+                    fontFamily: 'Montserrat-Regular',
+                  }}>
+                  Wallet
+                </Text>
               </View>
             );
           },
