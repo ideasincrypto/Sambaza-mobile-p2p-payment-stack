@@ -25,10 +25,12 @@ const TransactionCard = () => {
   return (
     <TouchableOpacity style={{...style.container, ...style.shadow}}>
       <View style={style.box}>
-        <Image
-          source={require('../../../assets/spotify.png')}
-          style={{width: 50, height: 50, left: 20}}
-        />
+        <View style={style.imagebox}>
+          <Image
+            source={require('../../../assets/spotify.png')}
+            style={{width: 50, height: 50, left: 20}}
+          />
+        </View>
         <View style={style.innerbox}>
           <Text style={style.recipient}>Spotify</Text>
           <Text style={style.date}>{data[0].date}</Text>
@@ -60,14 +62,18 @@ const style = StyleSheet.create({
   amount: {
     fontSize: 19,
     fontWeight: 'bold',
+    color: 'black',
     right: 20,
   },
   recipient: {
     fontWeight: 'bold',
+    color: 'black',
   },
+  imagebox: {},
   box: {
     flexDirection: 'row',
     justifyContent: 'center',
+
     alignItems: 'center',
   },
   innerbox: {
