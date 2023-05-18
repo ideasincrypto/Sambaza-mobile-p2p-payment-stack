@@ -2,10 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 
-import {Title, Caption, Drawer} from 'react-native-paper';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icons from 'react-native-vector-icons/MaterialIcons';
+import {Title, Drawer} from 'react-native-paper';
 
 export default function SideMenu(props) {
   return (
@@ -62,7 +59,7 @@ export default function SideMenu(props) {
               }}
               label="Profile"
               onPress={() => {
-                props.navigation.navigate('Settings');
+                props.navigation.navigate('Sambaza', {screen: 'ProfileScreen'});
               }}
             />
             <DrawerItem

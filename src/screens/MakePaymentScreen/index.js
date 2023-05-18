@@ -11,7 +11,6 @@ import PageHeader from '../../components/PageHeader';
 import VirtualKeyboard from 'react-native-virtual-keyboard';
 const MakePaymentScreen = ({navigation, route}) => {
   const [amount, setAmount] = useState(0);
-  const user = route.params;
   const goBack = () => {
     navigation.goBack();
   };
