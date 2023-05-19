@@ -59,7 +59,7 @@ export default function SideMenu(props) {
               }}
               label="Profile"
               onPress={() => {
-                props.navigation.navigate('Sambaza', {screen: 'ProfileScreen'});
+                props.navigation.navigate('ProfileScreen');
               }}
             />
             <DrawerItem

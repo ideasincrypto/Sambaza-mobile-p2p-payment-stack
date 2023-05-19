@@ -1,41 +1,39 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-
-const SettingsCard = (props) => {
+const SettingsCard = props => {
+  const navigate = useNavigation();
   return (
-    <TouchableOpacity style={style.container}>
+    <TouchableOpacity
+      onPress={() => {
+        navigate.navigate(props.data.screen);
+      }}
+      style={style.container}>
       <View style={style.box}>
         <Image
-      source={props.data.icon}
-      resizeMode="contain"
-      style={{
-        width: 30,
-        marginLeft:5,
-        tintColor: '#000',
-        height: 30,
-      }}
+          source={props.data.icon}
+          resizeMode="contain"
+          style={{
+            width: 30,
+            marginLeft: 5,
+            tintColor: '#000',
+            height: 30,
+          }}
         />
         <View style={style.innerbox}>
           <Text style={style.name}>{props.data.name}</Text>
-         
         </View>
       </View>
       <View style={style.more}>
-      <Image
-      source={require("../../../assets/right-arrow.png")}
-      resizeMode="contain"
-      style={{
-        width: 20,
-        tintColor: '#000',
-        height: 20,
-      }}
+        <Image
+          source={require('../../../assets/right-arrow.png')}
+          resizeMode="contain"
+          style={{
+            width: 20,
+            tintColor: '#000',
+            height: 20,
+          }}
         />
       </View>
     </TouchableOpacity>
@@ -49,11 +47,11 @@ const style = StyleSheet.create({
     right: 20,
     top: 10,
     backgroundColor: '#f5f5f5',
-    marginBottom:10,
+    marginBottom: 10,
     height: 70,
-    padding:4,
-    
-    borderRadius:8,
+    padding: 4,
+
+    borderRadius: 8,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
@@ -67,15 +65,13 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     right: 20,
-   
-    width:30,
-   
+
+    width: 30,
   },
   name: {
-    
-    marginLeft:-20,
-    color:"black",
-    fontSize:17,
+    marginLeft: -20,
+    color: 'black',
+    fontSize: 17,
   },
   box: {
     flexDirection: 'row',

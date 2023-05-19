@@ -54,7 +54,7 @@ const ProfileScreen = ({navigation}) => {
     },
   ];
   return (
-    <ScrollView showsHorizontalScrollIndicator={false} style={styles.container}>
+    <View showsHorizontalScrollIndicator={false} style={styles.container}>
       <PageHeader goBack={goBack} />
       <ScrollView
         scrollEventThrottle={1}
@@ -70,7 +70,7 @@ const ProfileScreen = ({navigation}) => {
           flex: 1,
           top: 0,
           left: 0,
-
+          bottom: 60,
           right: 0,
           padding: 20,
         }}>
@@ -103,7 +103,7 @@ const ProfileScreen = ({navigation}) => {
           ))}
         </View>
       </ScrollView>
-    </ScrollView>
+    </View>
   );
 };
 

@@ -1,7 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import HomeScreen from '../screens/HomeScreen';
-import PaymentScreen from '../screens/PaymentScreen';
 import WalletScreen from '../screens/WalletScreen';
 import {
   Image,
@@ -11,8 +9,9 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import PaymentStackNavigator from './stack';
+import PaymentStackNavigator from './paymentstack';
 import HomeStackNavigator from '../screens/HomeScreen';
+import WalletStackNavigator from './walletstack';
 
 const Tab = createBottomTabNavigator();
 const {width, height} = Dimensions.get('window');
@@ -117,7 +116,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Wallet"
-        component={WalletScreen}
+        component={WalletStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {

@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
-export default function PageHeader({goBack}) {
+import {useNavigation} from '@react-navigation/native';
+export default function PageHeader({props}) {
+  const nav = useNavigation();
   return (
     <View style={style.header}>
       <View
@@ -15,8 +17,8 @@ export default function PageHeader({goBack}) {
           width: 40,
         }}>
         <TouchableOpacity
-          onClick={() => {
-            goBack();
+          onPress={() => {
+            nav.goBack();
           }}>
           <Image
             source={require('../../../assets/back.png')}
