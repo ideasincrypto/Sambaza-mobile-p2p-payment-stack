@@ -84,7 +84,7 @@ export default function VirtualCard(props) {
                 top: 20,
                 fontSize: 16,
               }}>
-              {props.show ? `$120` : '$***'}
+              {props.show ? `$0` : '$***'}
             </Text>
           </View>
         </View>
