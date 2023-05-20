@@ -8,10 +8,14 @@ import {
   Image,
 } from 'react-native';
 
-const TopCard = () => {
+const TopCard = props => {
   return (
     <View style={{...style.container, ...style.shadow}}>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity
+        onPress={() => {
+          props.showTopupView(true);
+        }}
+        style={style.button}>
         <Image
           source={require('../../../assets/deposit.png')}
           resizeMode="contain"
