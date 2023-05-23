@@ -1,12 +1,15 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Tabs from './src/navigation/tabs';
+import WelcomeStackNavigator from './src/navigation/welcome';
 import Drawers from './src/navigation/drawers';
 
 const App = () => {
+  
+  const [userState, setUserState] = useState('logged out');
+ 
   return (
     <NavigationContainer>
-      <Drawers />
+      {userState==="logged out" ?<WelcomeStackNavigator/>:<Drawers/>}
     </NavigationContainer>
   );
 };

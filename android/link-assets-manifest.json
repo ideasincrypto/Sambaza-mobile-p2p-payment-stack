@@ -2,8 +2,20 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf",
+      "sha1": "3cdf2c3063515d1b608640e7fbd85d73f43be623"
+    },
+    {
+      "path": "assets/fonts/Fraunces.ttf",
+      "sha1": "050ebb6aa5a616c05d62b23e6d1e9f0aa877fcfa"
+    },
+    {
       "path": "assets/fonts/LeagueSpartan.ttf",
       "sha1": "be732ce735b3930c764536c8737eb55e4e1cb5a7"
+    },
+    {
+      "path": "assets/fonts/Mandali-Regular.ttf",
+      "sha1": "aab7324b400ae07bdc82edf68cd7ccf999c23a56"
     },
     {
       "path": "assets/fonts/MontserratAlternates-Black.ttf",
@@ -76,6 +88,14 @@
     {
       "path": "assets/fonts/MontserratAlternates-ThinItalic.ttf",
       "sha1": "a25b796adea69352d1e2ab3bbcf72eae3212a4ed"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha1": "c5f811a80037c921eee5ce063fcf9ebae24d756a"
+    },
+    {
+      "path": "assets/fonts/README.txt",
+      "sha1": "99f2439759207acb95fc0b2a4f5edabcdb9a7ea2"
     }
   ]
 }
