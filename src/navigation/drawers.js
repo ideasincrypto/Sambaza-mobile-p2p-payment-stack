@@ -4,6 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import SideMenu from '../screens/SideMenu';
 import HomeScreen from '../screens/HomeScreen';
 import Tabs from './tabs';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,6 +19,7 @@ export default function Drawers() {
         overlayColor: '#00000000',
       }}>
       <Drawer.Screen name="Tabs" component={Tabs} />
+      <Drawer.Screen name="Settings" component={SettingsScreen} />
     </Drawer.Navigator>
   );
 }

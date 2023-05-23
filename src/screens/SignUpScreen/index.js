@@ -10,36 +10,10 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-import {login} from '../../features/actions/auth';
-const LoginScreen = () => {
-  const navigation = useNavigation();
-  const [email, setEmail] = useState('');
+import CheckBox from '@react-native-community/checkbox';
+export default function SignUpScreen({navigation}) {
   const [isPasswordShown, setPassowrdShow] = useState(true);
-  const [password, setPassword] = useState('');
-  /*const dispatch = useDispatch();*/
-  const onLogin = () => {
-    console.log(email, password);
-    if (email === 'admin@admin.com' && password === 'admin') {
-    } else {
-      navigation.navigate('LoginScreen');
-    }
-    /*let user = {
-      username: username,
-      password: password,
-    };
-    dispatch(login(user))
-      .then(response => {
-        if (response.status == 'success') {
-          navigation.replace('HomeScreen');
-        }
-      })
-      .catch(error => {
-        navigation.replace('LoginScreen');
-      });
-      */
-  };
+  const [isChecked, setIsChecked] = useState(false);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <Image
@@ -54,16 +28,16 @@ const LoginScreen = () => {
           resizeMode: 'cover',
         }}
         source={require('../../../assets/backgroundcard.jpg')}></Image>
-
       <View style={{marginHorizontal: 22}}>
         <View style={{marginVertical: 22}}>
           <Text
             style={{
               fontSize: 25,
+
               color: 'white',
               fontFamily: 'MontserratAlternates-SemiBold',
             }}>
-            Sign in to your Account
+            Create Your Account
           </Text>
           <Text style={{fontSize: 12, color: 'white'}}>
             Sambaza money today!
@@ -73,9 +47,41 @@ const LoginScreen = () => {
       <View style={{flex: 1}}>
         <ScrollView
           style={{...styles.navbar}}
-          contentContainerStyle={{}}
+          contentContainerStyle={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
           showsVerticalScrollIndicator={false}>
           <View style={{marginHorizontal: 22, marginTop: 10}}>
+            <View style={{marginBottom: 12}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: 'black',
+                  fontWeight: 500,
+                  marginVertical: 8,
+                }}>
+                Fullname
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  borderColor: 'gray',
+                  height: 50,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 22,
+                }}>
+                <TextInput
+                  placeholder="Enter your fullname"
+                  placeholderTextColor={'black'}
+                  style={{
+                    width: '100%',
+                  }}></TextInput>
+              </View>
+            </View>
             <View style={{marginBottom: 12}}>
               <Text
                 style={{
@@ -98,19 +104,97 @@ const LoginScreen = () => {
                   paddingLeft: 22,
                 }}>
                 <TextInput
-                  placeholder="Enter your email address or tag"
+                  placeholder="Enter your email address"
                   placeholderTextColor={'black'}
-                  value={email}
-                  onChangeText={e => {
-                    setEmail(e);
-                  }}
                   keyboardType="email-address"
                   style={{
                     width: '100%',
                   }}></TextInput>
               </View>
             </View>
+            <View style={{marginBottom: 12}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: 'black',
+                  fontWeight: 500,
+                  marginVertical: 8,
+                }}>
+                User Tag
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  borderColor: 'gray',
+                  height: 50,
+                  borderWidth: 1,
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
 
+                  borderRadius: 8,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 22,
+                }}>
+                <TextInput
+                  placeholder="@"
+                  value="@"
+                  placeholderTextColor={'black'}
+                  style={{
+                    width: '15%',
+                    borderRightWidth: 1,
+                    borderRightColor: 'black',
+                  }}></TextInput>
+                <TextInput
+                  placeholder="Enter your user tag"
+                  placeholderTextColor={'black'}
+                  style={{
+                    width: '85%',
+                  }}></TextInput>
+              </View>
+            </View>
+            <View style={{marginBottom: 12}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: 'black',
+                  fontWeight: 500,
+                  marginVertical: 8,
+                }}>
+                Phone Number
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  borderColor: 'gray',
+                  height: 50,
+                  borderWidth: 1,
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+
+                  borderRadius: 8,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 22,
+                }}>
+                <TextInput
+                  placeholder="+254"
+                  placeholderTextColor={'black'}
+                  keyboardType="numeric"
+                  style={{
+                    width: '15%',
+                    borderRightWidth: 1,
+                    borderRightColor: 'black',
+                  }}></TextInput>
+                <TextInput
+                  placeholder="Enter your phone number"
+                  placeholderTextColor={'black'}
+                  keyboardType="numeric"
+                  style={{
+                    width: '85%',
+                  }}></TextInput>
+              </View>
+            </View>
             <View style={{marginBottom: 12}}>
               <Text
                 style={{
@@ -135,10 +219,6 @@ const LoginScreen = () => {
                 <TextInput
                   placeholder="Enter your password"
                   placeholderTextColor={'black'}
-                  value={password}
-                  onChangeText={e => {
-                    setPassword(e);
-                  }}
                   secureTextEntry={isPasswordShown}
                   style={{
                     width: '100%',
@@ -170,22 +250,37 @@ const LoginScreen = () => {
                   )}
                 </TouchableOpacity>
               </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingVertical: 5,
+                  marginTop: 10,
+                }}>
+                <CheckBox
+                  style={{marginRight: 8}}
+                  value={isChecked}
+                  onValueChange={setIsChecked}
+                  color={isChecked ? '#3D0B86' : undefined}
+                />
 
+                <Text style={{color: 'black'}}>
+                  I agree to the terms and conditions
+                </Text>
+              </View>
               <TouchableOpacity
-                onPress={() => {
-                  onLogin();
-                }}
                 style={{
                   ...styles.button,
                 }}>
-                <Text style={{fontSize: 18, ...{color: 'white'}}}>Login</Text>
+                <Text style={{fontSize: 18, ...{color: 'white'}}}>Sign Up</Text>
               </TouchableOpacity>
             </View>
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                marginVertical: 20,
+                marginVertical: 10,
+                marginBottom: 50,
               }}>
               <View
                 style={{
@@ -195,8 +290,8 @@ const LoginScreen = () => {
                   marginHorizontal: 10,
                 }}
               />
-              <Text style={{fontSize: 14}}>Don't have an account?</Text>
-              <Pressable onPress={() => navigation.navigate('SignupScreen')}>
+              <Text style={{fontSize: 14}}>Already have an account?</Text>
+              <Pressable onPress={() => navigation.navigate('LoginScreen')}>
                 <Text
                   style={{
                     fontSize: 16,
@@ -205,7 +300,7 @@ const LoginScreen = () => {
                     fontFamily: 'MontserratAlternates-SemiBold',
                     marginLeft: 6,
                   }}>
-                  Sign up
+                  Login
                 </Text>
               </Pressable>
               <View
@@ -222,20 +317,9 @@ const LoginScreen = () => {
       </View>
     </SafeAreaView>
   );
-};
-export default LoginScreen;
-const styles = StyleSheet.create({
-  button: {
-    paddingBottom: 16,
-    paddingVertical: 10,
-    backgroundColor: '#4D3AA5',
+}
 
-    borderRadius: 12,
-    marginTop: 18,
-    marginBottom: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const styles = StyleSheet.create({
   navbar: {
     marginTop: 0,
     width: '100%',
@@ -250,5 +334,16 @@ const styles = StyleSheet.create({
 
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+  },
+  button: {
+    paddingBottom: 16,
+    paddingVertical: 10,
+    backgroundColor: '#4D3AA5',
+
+    borderRadius: 12,
+    marginTop: 18,
+    marginBottom: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

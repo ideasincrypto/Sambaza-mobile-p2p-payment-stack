@@ -42,29 +42,6 @@ export default function SideMenu(props) {
             <DrawerItem
               icon={({color, size}) => (
                 <Image
-                  source={require('../../../assets/profile.png')}
-                  resizeMode="contain"
-                  style={{
-                    width: 25,
-                    tintColor: 'black',
-                    height: 25,
-                  }}
-                />
-              )}
-              labelStyle={{
-                color: 'black',
-                fontSize: 14,
-                left: -20,
-                fontFamily: 'MontserratAlternates-Medium',
-              }}
-              label="Profile"
-              onPress={() => {
-                props.navigation.navigate('ProfileScreen');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Image
                   source={require('../../../assets/settings.png')}
                   resizeMode="contain"
                   style={{
@@ -83,30 +60,6 @@ export default function SideMenu(props) {
               label="Settings"
               onPress={() => {
                 props.navigation.navigate('Settings');
-              }}
-            />
-
-            <DrawerItem
-              icon={({color, size}) => (
-                <Image
-                  source={require('../../../assets/info.png')}
-                  resizeMode="contain"
-                  style={{
-                    width: 25,
-                    tintColor: 'black',
-                    height: 25,
-                  }}
-                />
-              )}
-              labelStyle={{
-                color: 'black',
-                fontSize: 14,
-                left: -20,
-                fontFamily: 'MontserratAlternates-Medium',
-              }}
-              label="About"
-              onPress={() => {
-                props.navigation.navigate('About');
               }}
             />
           </Drawer.Section>

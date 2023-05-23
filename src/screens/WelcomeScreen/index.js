@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-
+import {useNavigation} from '@react-navigation/native';
 export default function WelcomScreen() {
+  const navigation = useNavigation();
   return (
     <Swiper style={styles.wrapper}>
       <ImageBackground
@@ -56,6 +57,16 @@ export default function WelcomScreen() {
         <Image
           source={require('../../../assets/wallet2.png')}
           style={{width: 200, height: 240}}></Image>
+        <Text style={styles.textheading}>The future of finance</Text>
+        <Text style={styles.text}>
+          Send or receive money, or pay bills, our application is designed to
+          simplify your financial life.
+        </Text>
+      </View>
+      <View style={styles.slide2}>
+        <Image
+          source={require('../../../assets/credit-card-3d.webp')}
+          style={{width: 250, height: 240}}></Image>
         <Text style={styles.textheading}>Let's get started</Text>
         <Text style={styles.text}>
           It's now easier to shop on your favorite online store with Sambaza
@@ -63,15 +74,17 @@ export default function WelcomScreen() {
         </Text>
 
         <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SignupScreen');
+          }}
           style={{
             padding: 10 * 2,
             backgroundColor: '#4D3AA5',
-            borderRadius: 10 * 2,
+            borderRadius: 10,
             alignItems: 'center',
-            width: 220,
+            width: '90%',
             justifyContent: 'center',
 
-            borderRadius: 35,
             marginTop: 10 * 3,
           }}>
           <Text
@@ -93,6 +106,7 @@ const styles = StyleSheet.create({
   wrapper: {},
   textheading: {
     fontSize: 27,
+    marginTop: 30,
     fontWeight: 'bold',
     color: 'black',
     fontFamily: 'MontserratAlternates-SemiBold',
@@ -102,7 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   getstartedBtn: {
-    width: 220,
+    width: 320,
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
