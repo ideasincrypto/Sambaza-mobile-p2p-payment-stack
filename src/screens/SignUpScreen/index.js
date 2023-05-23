@@ -139,6 +139,7 @@ export default function SignUpScreen({navigation}) {
                 <TextInput
                   placeholder="@"
                   value="@"
+                  editable={false}
                   placeholderTextColor={'black'}
                   style={{
                     width: '15%',
@@ -179,6 +180,7 @@ export default function SignUpScreen({navigation}) {
                 }}>
                 <TextInput
                   placeholder="+254"
+                  editable={false}
                   placeholderTextColor={'black'}
                   keyboardType="numeric"
                   style={{

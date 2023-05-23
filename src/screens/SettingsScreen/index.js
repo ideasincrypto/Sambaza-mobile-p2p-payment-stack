@@ -6,11 +6,14 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Switch,
 } from 'react-native';
 
 import PageHeader from '../../components/PageHeader';
 import ProfileElement from '../../components/ProfileElement';
 const SettingsScreen = ({navigation}) => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [verification, setVerification] = useState(true);
   const goBack = () => {
     navigation.navigate('Home');
@@ -54,26 +57,17 @@ const SettingsScreen = ({navigation}) => {
     },
   ];
   return (
-    <View showsHorizontalScrollIndicator={false} style={styles.container}>
+    <View style={styles.container}>
       <PageHeader goBack={goBack} />
       <ScrollView
-        scrollEventThrottle={1}
-        showsHorizontalScrollIndicator={false}
-        contentInset={{
-          // iOS only
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-        }}
         contentContainerStyle={{
-          flex: 1,
           top: 0,
           left: 0,
-          bottom: 60,
+          bottom: 70,
           right: 0,
           padding: 20,
-        }}>
+        }}
+        showsVerticalScrollIndicator={false}>
         <View style={styles.details}>
           <Image
             source={require('../../../assets/avatar.jpg')}
@@ -136,6 +130,7 @@ const SettingsScreen = ({navigation}) => {
                 resizeMode="contain"
                 style={{
                   width: 30,
+                  tintColor: 'gray',
                   height: 30,
                 }}
               />
@@ -154,6 +149,7 @@ const SettingsScreen = ({navigation}) => {
               resizeMode="contain"
               style={{
                 width: 30,
+                tintColor: 'gray',
                 height: 30,
                 tintColor: 'gray',
               }}
@@ -178,10 +174,11 @@ const SettingsScreen = ({navigation}) => {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../../../assets/profile.png')}
+                source={require('../../../assets/lock.png')}
                 resizeMode="contain"
                 style={{
                   width: 30,
+                  tintColor: 'gray',
                   height: 30,
                 }}
               />
@@ -195,14 +192,12 @@ const SettingsScreen = ({navigation}) => {
                 Two-factor Authentication
               </Text>
             </View>
-            <Image
-              source={require('../../../assets/right-arrow.png')}
-              resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30,
-                tintColor: 'gray',
-              }}
+            <Switch
+              trackColor={{false: '#767577', true: '#81b0ff'}}
+              thumbColor={isEnabled ? 'lightblue' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -226,6 +221,7 @@ const SettingsScreen = ({navigation}) => {
                 resizeMode="contain"
                 style={{
                   width: 30,
+                  tintColor: 'gray',
                   height: 30,
                 }}
               />
@@ -244,6 +240,7 @@ const SettingsScreen = ({navigation}) => {
               resizeMode="contain"
               style={{
                 width: 30,
+                tintColor: 'gray',
                 height: 30,
                 tintColor: 'gray',
               }}
@@ -267,10 +264,54 @@ const SettingsScreen = ({navigation}) => {
                 justifyContent: 'center',
               }}>
               <Image
-                source={require('../../../assets/info.png')}
+                source={require('../../../assets/onetap.png')}
                 resizeMode="contain"
                 style={{
                   width: 30,
+                  tintColor: 'gray',
+                  height: 30,
+                }}
+              />
+              <Text
+                style={{
+                  color: 'black',
+                  marginHorizontal: 10,
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                }}>
+                Sambaza Tap
+              </Text>
+            </View>
+            <Switch
+              trackColor={{false: '#767577', true: '#81b0ff'}}
+              thumbColor={isEnabled ? 'lightblue' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProfileScreen');
+            }}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginVertical: 20,
+              justifyContent: 'space-between',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('../../../assets/language.png')}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  tintColor: 'gray',
                   height: 30,
                 }}
               />
@@ -285,6 +326,44 @@ const SettingsScreen = ({navigation}) => {
               </Text>
             </View>
             <Text>English(USA)</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProfileScreen');
+            }}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginVertical: 20,
+              justifyContent: 'space-between',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('../../../assets/currency.png')}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  tintColor: 'gray',
+
+                  height: 30,
+                }}
+              />
+              <Text
+                style={{
+                  color: 'black',
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  marginHorizontal: 10,
+                }}>
+                Default Currency
+              </Text>
+            </View>
+            <Text>USD</Text>
           </TouchableOpacity>
           <Text style={{fontSize: 16}}>App</Text>
           <TouchableOpacity
@@ -308,6 +387,7 @@ const SettingsScreen = ({navigation}) => {
                 resizeMode="contain"
                 style={{
                   width: 30,
+                  tintColor: 'gray',
                   height: 30,
                 }}
               />
@@ -326,6 +406,7 @@ const SettingsScreen = ({navigation}) => {
               resizeMode="contain"
               style={{
                 width: 30,
+                tintColor: 'gray',
                 height: 30,
                 tintColor: 'gray',
               }}
