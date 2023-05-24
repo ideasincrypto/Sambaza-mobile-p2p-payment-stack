@@ -412,6 +412,43 @@ const SettingsScreen = ({navigation}) => {
               }}
             />
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProfileScreen');
+            }}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginVertical: 20,
+              justifyContent: 'space-between',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('../../../assets/logout.png')}
+                resizeMode="contain"
+                style={{
+                  width: 30,
+                  tintColor: 'gray',
+                  height: 30,
+                }}
+              />
+              <Text
+                style={{
+                  color: 'black',
+                  fontSize: 16,
+                  fontWeight: 'bold',
+                  marginHorizontal: 10,
+                }}>
+                Logout
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
