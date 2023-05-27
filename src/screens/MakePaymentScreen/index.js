@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   dropdown1BtnStyle: {
     backgroundColor: 'white',
     borderWidth: 1,
+    
     borderRadius: 15,
   },
   amount: {
