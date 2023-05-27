@@ -75,7 +75,7 @@ export default function WelcomScreen() {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('SignupScreen');
+            navigation.navigate('LoginScreen');
           }}
           style={{
             padding: 10 * 2,

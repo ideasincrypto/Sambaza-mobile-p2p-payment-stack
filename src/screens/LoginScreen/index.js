@@ -12,20 +12,19 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {login} from '../../features/actions/auth';
+
+import {Login} from '../../store/actions';
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [isPasswordShown, setPassowrdShow] = useState(true);
   const [password, setPassword] = useState('');
-  /*const dispatch = useDispatch();*/
+  const dispatch = useDispatch();
   const onLogin = () => {
-    console.log(email, password);
-    if (email === 'admin@admin.com' && password === 'admin') {
-    } else {
-      navigation.navigate('LoginScreen');
-    }
-    /*let user = {
+    dispatch(Login(email, password));
+  };
+
+  /*let user = {
       username: username,
       password: password,
     };
@@ -39,7 +38,7 @@ const LoginScreen = () => {
         navigation.replace('LoginScreen');
       });
       */
-  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <Image

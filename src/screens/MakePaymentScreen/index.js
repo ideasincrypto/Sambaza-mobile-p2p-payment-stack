@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SelectDropdown from 'react-native-select-dropdown';
 import PageHeader from '../../components/PageHeader';
 import VirtualKeyboard from 'react-native-virtual-keyboard';
@@ -33,21 +34,34 @@ const MakePaymentScreen = ({navigation, route}) => {
         <Text style={styles.recipient}>John Doe</Text>
         <Text style={styles.amount}>{amount}</Text>
         <SelectDropdown
-          searchPlaceHolder="currency"
           data={currency}
-          buttonStyle={styles.dropdown1BtnStyle}
-          defaultButtonText={'Currency'}
-          onSelect={(selectedItem, index) => {}}
+          // defaultValueByIndex={1}
+          // defaultValue={'Egypt'}
+          onSelect={(selectedItem, index) => {
+            console.log(selectedItem, index);
+          }}
+          defaultButtonText={'Select currency'}
           buttonTextAfterSelection={(selectedItem, index) => {
-            // text represented after item is selected
-            // if data array is an array of objects then return selectedItem.property to render after item is selected
             return selectedItem;
           }}
           rowTextForSelection={(item, index) => {
-            // text represented for each item in dropdown
-            // if data array is an array of objects then return item.property to represent item in dropdown
             return item;
           }}
+          buttonStyle={styles.dropdown1BtnStyle}
+          buttonTextStyle={styles.dropdown1BtnTxtStyle}
+          renderDropdownIcon={isOpened => {
+            return (
+              <FontAwesome
+                name={isOpened ? 'chevron-up' : 'chevron-down'}
+                color={'#444'}
+                size={18}
+              />
+            );
+          }}
+          dropdownIconPosition={'right'}
+          dropdownStyle={styles.dropdown1DropdownStyle}
+          rowStyle={styles.dropdown1RowStyle}
+          rowTextStyle={styles.dropdown1RowTxtStyle}
         />
       </View>
       <View style={{flex: 1}}>
@@ -93,11 +107,18 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   dropdown1BtnStyle: {
-    backgroundColor: 'white',
+    width: '80%',
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 8,
     borderWidth: 1,
-    
-    borderRadius: 15,
+    borderColor: '#444',
   },
+  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left'},
+  dropdown1DropdownStyle: {backgroundColor: '#EFEFEF'},
+  dropdown1RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
+  dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
+
   amount: {
     fontFamily: 'MontserratAlternates-Medium',
     marginTop: 10,

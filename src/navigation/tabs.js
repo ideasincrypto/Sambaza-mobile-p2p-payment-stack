@@ -101,7 +101,7 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <>
               <Image
-                source={require('../../assets/transfer.png')}
+                source={require('../../assets/send.png')}
                 resizeMode="contain"
                 style={{
                   width: 25,

@@ -61,7 +61,7 @@ export default function SignUpScreen({navigation}) {
                   fontWeight: 500,
                   marginVertical: 8,
                 }}>
-                Fullname
+                First Name
               </Text>
               <View
                 style={{
@@ -75,7 +75,36 @@ export default function SignUpScreen({navigation}) {
                   paddingLeft: 22,
                 }}>
                 <TextInput
-                  placeholder="Enter your fullname"
+                  placeholder="Enter your first name"
+                  placeholderTextColor={'black'}
+                  style={{
+                    width: '100%',
+                  }}></TextInput>
+              </View>
+            </View>
+            <View style={{marginBottom: 12}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: 'black',
+                  fontWeight: 500,
+                  marginVertical: 8,
+                }}>
+                Second Name
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  borderColor: 'gray',
+                  height: 50,
+                  borderWidth: 1,
+                  borderRadius: 8,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingLeft: 22,
+                }}>
+                <TextInput
+                  placeholder="Enter your second name"
                   placeholderTextColor={'black'}
                   style={{
                     width: '100%',

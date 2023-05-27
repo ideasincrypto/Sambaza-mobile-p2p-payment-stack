@@ -15,8 +15,6 @@ export default function Drawers() {
       drawerContent={props => <SideMenu {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerType: 'back',
-        overlayColor: '#00000000',
       }}>
       <Drawer.Screen name="Tabs" component={Tabs} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />

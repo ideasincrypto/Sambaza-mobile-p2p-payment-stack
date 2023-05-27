@@ -66,7 +66,6 @@ export default Transfer;
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     top: 50,
     left: 20,
     right: 20,

@@ -99,7 +99,7 @@ export default function TopupfromSlide({
                 style={{width: 25, height: 25, tintColor: '#3D0B86'}}
               />
             </View>
-            <Text style={styles.methodname}>Mobile Phone</Text>
+            <Text style={styles.methodname}>Mobile Phone Transfer</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.method}>
             <View style={styles.box}>
@@ -108,7 +108,7 @@ export default function TopupfromSlide({
                 style={{width: 25, height: 25, tintColor: '#3D0B86'}}
               />
             </View>
-            <Text style={styles.methodname}>Bank</Text>
+            <Text style={styles.methodname}>Bank Transfer</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>

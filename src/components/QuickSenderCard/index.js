@@ -11,7 +11,6 @@ import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const QuickSenderCard = ({data, scrollX, index}) => {
-  const navigation = useNavigation();
   const {width} = Dimensions.get('screen');
   const cardWidth = width / 1.8;
 
@@ -21,14 +20,6 @@ const QuickSenderCard = ({data, scrollX, index}) => {
     (index + 1) * cardWidth,
   ];
 
-  const opacity = scrollX.interpolate({
-    inputRange,
-    outputRange: [0.8, 1, 0.1],
-  });
-  const scale = scrollX.interpolate({
-    inputRange,
-    outputRange: [0.5, 1, 0.5],
-  });
   return (
     <Animated.View
       style={{

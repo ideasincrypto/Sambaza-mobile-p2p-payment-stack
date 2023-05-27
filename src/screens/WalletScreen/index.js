@@ -16,9 +16,9 @@ const WalletScreen = ({navigation}) => {
       screen: 'BankScreen',
     },
     {
-      name: 'Link to M-pesa',
+      name: 'Link Phone Number',
       icon: require('../../../assets/phone.png'),
-      screen: 'MpesaScreen',
+      screen: 'MobilePhoneScreen',
     },
   ];
   return (

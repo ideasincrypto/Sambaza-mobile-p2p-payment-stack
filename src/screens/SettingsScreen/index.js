@@ -10,11 +10,15 @@ import {
 } from 'react-native';
 
 import PageHeader from '../../components/PageHeader';
-import ProfileElement from '../../components/ProfileElement';
+import {useDispatch} from 'react-redux';
+import {Logout} from '../../store/actions';
 const SettingsScreen = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  const [verification, setVerification] = useState(true);
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(Logout());
+  };
   const goBack = () => {
     navigation.navigate('Home');
   };
@@ -415,7 +419,7 @@ const SettingsScreen = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ProfileScreen');
+              logout();
             }}
             style={{
               flexDirection: 'row',

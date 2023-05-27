@@ -29,8 +29,6 @@ export default Transactions;
 
 const style = StyleSheet.create({
   constainer: {
-    flex: 1,
-    top: -30,
     left: 20,
 
     right: 20,
