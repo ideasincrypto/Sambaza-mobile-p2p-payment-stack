@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// get all user data from backend on login
+import {config} from '../features/services/config';
 export const Init = () => {
   return async dispatch => {
     let token = await AsyncStorage.getItem('token');
@@ -15,10 +15,19 @@ export const Init = () => {
 export const Login = (email, password) => {
   return async dispatch => {
     let token = null;
-    if (email === 'admin@admin.com' && password == '1234') {
-      token = email + password;
-      await AsyncStorage.setItem('token', token);
-    }
+    const data = {
+      email: email,
+      password,
+    };
+    await config
+      .post(`/login`, data)
+      .then(res => {
+        token = res.data.data;
+      })
+      .catch(e => {
+        return e;
+      });
+    await AsyncStorage.setItem('token', token);
     dispatch({
       type: 'LOGIN',
       payload: token,
@@ -26,8 +35,30 @@ export const Login = (email, password) => {
   };
 };
 
-export const SignUp = (email, password) => {
-  return async () => {};
+export const SignUp = async (
+  firstname,
+  lastname,
+  email,
+  phonenumber,
+  tag,
+  password,
+) => {
+  const data = {
+    firstname: firstname,
+    lastname: lastname,
+    password: password,
+    email: email,
+    phone: `+254` + phonenumber,
+    tag: tag,
+  };
+  await config
+    .post('/signup', data)
+    .then(res => {
+      return res.data.message;
+    })
+    .catch(e => {
+      return e;
+    });
 };
 
 export const Logout = () => {
